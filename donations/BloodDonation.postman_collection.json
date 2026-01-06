@@ -1,0 +1,130 @@
+{
+  "info": {
+    "name": "Blood Donation API",
+    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "description": "Postman collection for testing Authentication and Blood Donation app APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"Blue\",\n  \"email\": \"blue99942@gmail.com\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": { "raw": "http://127.0.0.1:8000/auth/register/", "protocol": "http", "host": ["127.0.0.1"], "port": "8000", "path": ["auth", "register/"] }
+          }
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"Blue\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": { "raw": "http://127.0.0.1:8000/auth/login/", "protocol": "http", "host": ["127.0.0.1"], "port": "8000", "path": ["auth", "login/"] }
+          }
+        },
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Token {{authToken}}", "type": "text" }
+            ],
+            "url": { "raw": "http://127.0.0.1:8000/auth/profile/", "protocol": "http", "host": ["127.0.0.1"], "port": "8000", "path": ["auth", "profile/"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Donation App",
+      "item": [
+        {
+          "name": "Create Donation Center",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Red Cross Center\",\n  \"location\": \"Downtown\",\n  \"latitude\": 3.867,\n  \"longitude\": 11.517,\n  \"contact_number\": \"+237650000000\",\n  \"email\": \"redcross@example.com\"\n}"
+            },
+            "url": { "raw": "http://127.0.0.1:8000/api/donations/centers/", "protocol": "http", "host": ["127.0.0.1"], "port": "8000", "path": ["api", "donations", "centers/"] }
+          }
+        },
+        {
+          "name": "List Donation Centers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "http://127.0.0.1:8000/api/donations/centers/", "protocol": "http", "host": ["127.0.0.1"], "port": "8000", "path": ["api", "donations", "centers/"] }
+          }
+        },
+        {
+          "name": "Create Blood Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Token {{authToken}}", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"center\": 1,\n  \"required_blood_type\": \"O+\",\n  \"quantity\": 2,\n  \"urgency_level\": \"High\"\n}"
+            },
+            "url": { "raw": "http://127.0.0.1:8000/api/donations/blood-requests/", "protocol": "http", "host": ["127.0.0.1"], "port": "8000", "path": ["api", "donations", "blood-requests/"] }
+          }
+        },
+        {
+          "name": "List Blood Requests",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Token {{authToken}}", "type": "text" }
+            ],
+            "url": { "raw": "http://127.0.0.1:8000/api/donations/blood-requests/", "protocol": "http", "host": ["127.0.0.1"], "port": "8000", "path": ["api", "donations", "blood-requests/"] }
+          }
+        },
+        {
+          "name": "Create Donation",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Token {{authToken}}", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"center\": 1,\n  \"quantity\": 1\n}"
+            },
+            "url": { "raw": "http://127.0.0.1:8000/api/donations/donations/", "protocol": "http", "host": ["127.0.0.1"], "port": "8000", "path": ["api", "donations", "donations/"] }
+          }
+        },
+        {
+          "name": "List Donations",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Token {{authToken}}", "type": "text" }
+            ],
+            "url": { "raw": "http://127.0.0.1:8000/api/donations/donations/", "protocol": "http", "host": ["127.0.0.1"], "port": "8000", "path": ["api", "donations", "donations/"] }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "authToken",
+      "value": ""
+    }
+  ]
+}
