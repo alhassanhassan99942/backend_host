@@ -138,7 +138,7 @@ class Notification(models.Model):
     )
     title = models.CharField(max_length=200)
     message = models.TextField()
-    blood_group = models.CharField(max_length=5, default="A+") 
+    blood_group = models.CharField(max_length=5) 
     request_id = models.IntegerField(default=1)
     is_read = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
