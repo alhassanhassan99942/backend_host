@@ -39,7 +39,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined= models.DateTimeField(auto_now_add=True)
     objects = UserManager()
     
-    blood_group = models.CharField(max_length=3, choices=BLOOD_GROUPS, blank=True, null=True)
+    blood_group = models.CharField(max_length=3, choices=BLOOD_GROUPS, blank=True, null=True, default="A+")
     
 
     USERNAME_FIELD = 'email'
